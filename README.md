@@ -1,31 +1,44 @@
-# ChemMorph — interactive 3D aromatic transformation POC
+# Mechanism Lab — stepwise 3D benzene nitration PoC
 
-[**View live site**](https://felixzhaofelix.github.io/molecular-viewer-poc/)
+**[Open the interactive website](https://felixzhaofelix.github.io/molecular-viewer-poc/)**
 
-A lightweight, client-side molecular visualization proof of concept using [3Dmol.js](https://3dmol.org/) and GitHub Pages.
+An educational proof of concept for showing **a chemical mechanism through sequential 3D stages**, instead of morphing one static molecule into another. Built in a single `index.html` using [3Dmol.js](https://3dmol.org/) and hosted by GitHub Pages.
 
-## Demo
+## Demonstration reaction
 
-A visual comparison between:
-- **Fluorobenzene (C₆H₅F)**: a six-membered aromatic ring with a fluorine substituent.
-- **4-Chloropyridine (C₅H₄ClN)**: one ring carbon replaced by nitrogen (position 4 relative to chlorine), and the fluorine replaced with chlorine.
+**Benzene + nitronium ion → nitrobenzene** via electrophilic aromatic substitution (EAS).
 
-The molecular display supports **drag-to-rotate, zoom, play/pause, timeline scrubbing, end-state jump buttons, reset camera, and auto-rotation**.
+The animation has five labeled stages:
+1. **Reactants** — benzene, nitronium (NO₂⁺), and water as an illustrative generic base.
+2. **Approach** — NO₂⁺ moves toward an aromatic π bond; gold markers indicate electron-pair movement.
+3. **σ-complex** — formation of a carbon–nitrogen bond, loss of aromaticity, and a positively charged arenium intermediate.
+4. **Deprotonation** — the base accepts the proton; the C–H bond electron pair restores π bonding.
+5. **Product** — nitrobenzene and a protonated base are represented.
 
-### Scientific accuracy disclaimer
+Controls: Play/pause, timeline scrubbing, direct stage navigation, previous/next, camera reset, model rotation and zoom.
 
-**This is not a verified chemical reaction or mechanistic animation.** The interpolated color/radius changes are an *illustrative structural morph*. Atoms do not literally change elements in a substitution mechanism. It omits explicit hydrogens, shows schematic aromatic bonding, and does not represent transition states, energetics, reaction conditions, mechanisms, or physically meaningful intermediates.
+## Important scientific limits
 
-The chosen transformations are only a stand-in for an incompletely specified research idea. Replace with approved molecular structures, reaction context, and scientifically grounded trajectories before using it to present actual research.
+This is a **schematic mechanism visualization**, not a calculated molecular-dynamics trajectory, and not your collaborator's as-yet-unspecified reaction.
 
-## Technology and deployment
+- Gold spheres show the approximate *direction of electron-pair flow*. Electrons are **not** modeled as literal classical particles moving along these trajectories.
+- Aromatic and resonance bonding is simplified. The σ-complex is resonance-delocalized; the simplified ring representation does not resolve all contributors or formal charges.
+- Animated geometries, bond changes and playback timing are illustrative, **not** calculated coordinates or transition states.
+- Nitronium is assumed to already be present; its formation from nitric acid and sulfuric acid is not simulated.
+- Water appears as a **generic proton-accepting base** to explain the deprotonation step; this does not specify the actual proton acceptor under a particular nitration condition.
+- In this example the **ring carbon remains carbon**. A ring hydrogen is replaced by the nitrogen-containing nitro group. An actual **C→N substitution of a ring atom** would be a different transformation and mechanism.
+- The model uses simplified atoms and implicit ring hydrogens, and does not imply measured kinetics, energetics, or reaction conditions.
 
-- `index.html`: self-contained site with HTML, CSS, JavaScript, and 3Dmol.js loaded from a public CDN
-- No frontend build system or backend
-- **GitHub Pages**: Settings → Pages → Deploy from a branch → main → /(root)
+Reference educational mechanism: [University of Calgary — Electrophilic Aromatic Substitution](https://www.chem.ucalgary.ca/courses/353/Carey5th/Ch12/ch12-3.html).
 
-## Next steps
+## Publishing to GitHub Pages
 
-Ask the chemist for the exact reactant and product (name, SMILES, SDF, MOL, XYZ), and ideally IRC/NEB/molecular dynamics trajectory coordinates if this is intended as an actual reaction-path animation.
+Repository **Settings → Pages → Deploy from a branch → main → /(root)**.
 
-The POC can then be adapted to display the correct molecular structure(s), evidence, and citable research context.
+There is no build command, backend, or dependency installation. A browser with WebGL and internet access is required for the externally loaded 3Dmol.js library.
+
+## Replacing the example with research
+
+Request her actual **reactant/product structures, elementary steps and intermediates**, and ideally atom mappings and computationally derived geometry frames (e.g. XYZ, SDF, MOL or IRC/NEB output). Encode her stages and annotate uncertain electron-flow assumptions explicitly, with permission and citations.
+
+Keep scientific mechanism claims separate from interpolated visual effects.
